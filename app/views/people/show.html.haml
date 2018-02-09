@@ -1,0 +1,28 @@
+.panel.panel-default
+  .panel-heading
+    .col-md-4
+      %h4= @person.name
+    .col-md-offset-10
+      = link_to 'Edit', edit_person_path(@person) , {class: 'btn btn-primary'}
+      = link_to 'Back', people_path , {class: 'btn btn-default'}
+  .panel-body
+
+
+    %table#person_addresses
+      %thead
+        %tr
+          %th Street
+          %th City
+          %th Satte
+          %th Zip Code
+          %th Country
+          %th
+      %tbody
+        - @person.addresses.each do |address|
+          %tr
+            %td= address.street
+            %td= address.city
+            %td= address.state
+            %td= address.zip
+            %td= address.country
+            %td

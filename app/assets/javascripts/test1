@@ -1,0 +1,43 @@
+//= require turbolinks
+//= require turbolinks-compatibility
+
+//= require jquery.turbolinks
+
+
+- @people.each do |person|
+  %tr
+    %td= link_to person.name, person_path(person), style: "color: blue;"
+    %td= person.birth_date
+    %td= person.phone
+    %td
+      - if person.enable
+        %input{checked: 'checked',class: 'person_check', id: person.id, data: { toggle: 'toggle', off: 'disable', on: 'enable'}, onclick: "change_status(#person.id)", type: 'checkbox'}
+      - else
+        %input{ data: { toggle: 'toggle', off: 'disable', on: 'enable'}, class: 'person_check', id: "#{person.id}", onclick: "change_status(#prson.id)", type: 'checkbox'}
+
+    %td= link_to 'Edit', edit_person_path(person), {class: 'btn btn-default'}
+    %td= link_to 'Destroy', person, method: :delete, data: { confirm: 'Are you sure?' }, style: "color: red;"
+
+%br
+
+
+
+= link_to 'New Person', new_person_path, {class: 'btn btn-primary'}
+
+
+def index
+  @people = Person.all
+end
+
+
+- if current_page?('/') || current_page?(people_path)
+  %form.navbar-form.navbar-left
+    .form-group
+      = form_tag(people_path, :method => "get", id: "search-form" )  do
+        = text_field_tag :search, params[:search], class:"form-control", placeholder: "Search Books"
+        = submit_tag "Search", :name => nil, class:"btn btn-default"
+
+
+        = link_to 'Edit', edit_person_address_path(person_id: address.person_id, id: address.id), {class: 'btn btn-default'}
+        = link_to 'Delete', person_address_url(person_id: address.person_id, id: address.id), method: :delete, data: { confirm: 'Are you sure?' }, style: "color: red;"
+= link_to 'New address', new_person_address_path(person_id: @person.id), {class: 'btn btn-primary'}

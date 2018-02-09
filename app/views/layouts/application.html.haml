@@ -1,0 +1,30 @@
+!!!
+%html
+  %head
+    %meta{:content => "text/html; charset=UTF-8", "http-equiv" => "Content-Type"}/
+    %title Practice
+    = csrf_meta_tags
+    = stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload'
+    = javascript_include_tag 'application', 'data-turbolinks-track': 'reload'
+
+  %body
+
+
+  %br/
+  %br/
+  .container
+    %nav.navbar.navbar-inverse.fixed-top
+      .container-fluid
+        .navbar-header
+          %a.navbar-brand{:href => "#"} People Informaion
+        %ul.nav.navbar-nav
+
+          %li.active
+            %a{:href => "<haml_loud"} Home
+          %li
+            %a{:href => "<haml_loud"} Contact us
+
+
+
+
+    = yield
